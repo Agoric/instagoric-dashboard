@@ -133,11 +133,11 @@ const Dashboard = ({ showMainnet }) => {
             <th>Testnet Name</th>
             <th>Chain</th>
             <th>Docker Image</th>
+            <th>Purpose</th>
             <th>Revision Link</th>
             <th>Network Config</th>
             <th>Endpoints</th>
             <th>Explorer</th>
-            <th>Purpose</th>
             <th>Faucet</th>
           </tr>
         </thead>
