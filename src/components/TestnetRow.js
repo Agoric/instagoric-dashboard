@@ -14,7 +14,6 @@ const TestnetRow = ({ testnet }) => {
           </a>
         )}
       </td>
-      </td>
       <td>
         {testnet.networkConfig && (
           <a href={testnet.networkConfig} target="_blank" rel="noopener noreferrer">
