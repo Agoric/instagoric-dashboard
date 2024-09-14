@@ -11,7 +11,7 @@ const testnetUrls = [
 
 const mainnetData = {
   chain: 'Mainnet',
-  explorer: 'https://mainnet.explorer.link',
+  explorer: 'https://ping.pub/agoric/',
   datadogMetrics: 'https://datadog.metrics.link',
 };
 
