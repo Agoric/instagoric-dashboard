@@ -38,7 +38,11 @@ const Dashboard = ({ showMainnet }) => {
             const data = parseTestnetData(preTag.innerText);
             console.log(`Parsed data for ${url}:`, data); // Debug log to check parsed data
             const testnetName = new URL(url).hostname.split('.')[0];
-            return { testnetName, url, ...data };
+            const netInfoUrl = `https://${testnetName}.rpc.agoric.net/net_info`;
+            const netInfoResponse = await fetch(netInfoUrl);
+            const netInfoData = await netInfoResponse.json();
+            const n_peers = netInfoData.result.n_peers;
+            return { testnetName, url, n_peers, ...data };
           } catch (error) {
             console.error(`Error fetching data from ${url}:`, error);
             return null;
@@ -146,6 +150,7 @@ const Dashboard = ({ showMainnet }) => {
             <th>Endpoints</th>
             <th>Explorer</th>
             <th>Faucet</th>
+            <th>Peers</th>
           </tr>
         </thead>
         <tbody>

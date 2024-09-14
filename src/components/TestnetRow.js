@@ -54,6 +54,7 @@ const TestnetRow = ({ testnet }) => {
           </a>
         )}
       </td>
+      <td>{testnet.n_peers}</td>
     </tr>
   );
 };
