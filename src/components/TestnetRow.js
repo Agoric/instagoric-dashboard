@@ -25,15 +25,13 @@ const TestnetRow = ({ testnet }) => {
             RPC
           </a>
         )}
-      </td>
-      <td>
+        &ensp;
         {testnet.grpc && (
           <a href={testnet.grpc} target="_blank" rel="noopener noreferrer">
             gRPC
           </a>
         )}
-      </td>
-      <td>
+        &ensp;
         {testnet.api && (
           <a href={testnet.api} target="_blank" rel="noopener noreferrer">
             API
