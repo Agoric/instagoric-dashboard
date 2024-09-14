@@ -104,13 +104,20 @@ const Dashboard = ({ showMainnet }) => {
             <thead>
               <tr>
                 <th>Chain</th>
+                <th>Docker Image</th>
+                <th>Purpose</th>
+                <th>Revision Link</th>
+                <th>Network Config</th>
+                <th>Endpoints</th>
                 <th>Explorer</th>
-                <th>Datadog Metrics</th>
+                <th>Faucet</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>{mainnetData.chain}</td>
+                <td>Mainnet Docker Image</td>
+                <td>Mainnet Purpose</td>
                 <td>
                   <a href={mainnetData.explorer} target="_blank" rel="noopener noreferrer">
                     Explorer
