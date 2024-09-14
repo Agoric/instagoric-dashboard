@@ -94,9 +94,7 @@ const Dashboard = () => {
             <th>Docker Image</th>
             <th>Revision Link</th>
             <th>Network Config</th>
-            <th>RPC</th>
-            <th>gRPC</th>
-            <th>API</th>
+            <th>Endpoints</th>
             <th>Explorer</th>
             <th>Faucet</th>
           </tr>
