@@ -9,7 +9,13 @@ const testnetUrls = [
   'https://axlenet.agoric.net',
 ];
 
-const Dashboard = () => {
+const mainnetData = {
+  chain: 'Mainnet',
+  explorer: 'https://mainnet.explorer.link',
+  datadogMetrics: 'https://datadog.metrics.link',
+};
+
+const Dashboard = ({ showMainnet }) => {
   const [testnets, setTestnets] = useState([]);
 
   useEffect(() => {
@@ -86,6 +92,35 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
+      {showMainnet && (
+        <div className="mainnet-section">
+          <h2>Mainnet</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Chain</th>
+                <th>Explorer</th>
+                <th>Datadog Metrics</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{mainnetData.chain}</td>
+                <td>
+                  <a href={mainnetData.explorer} target="_blank" rel="noopener noreferrer">
+                    Explorer
+                  </a>
+                </td>
+                <td>
+                  <a href={mainnetData.datadogMetrics} target="_blank" rel="noopener noreferrer">
+                    Datadog Metrics
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      )}
       <h1>Testnet Dashboard</h1>
       <table>
         <thead>
