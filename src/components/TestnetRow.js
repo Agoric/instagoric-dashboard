@@ -7,11 +7,13 @@ const TestnetRow = ({ testnet }) => {
       <td>{testnet.chain}</td>
       <td>{testnet.dockerImage}</td>
       <td>{testnet.purpose}</td>
+      <td>
         {testnet.revisionLink && (
           <a href={testnet.revisionLink} target="_blank" rel="noopener noreferrer">
             Revision Link
           </a>
         )}
+      </td>
       </td>
       <td>
         {testnet.networkConfig && (
