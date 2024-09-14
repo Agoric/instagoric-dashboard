@@ -122,6 +122,7 @@ const Dashboard = ({ showMainnet }) => {
           </table>
         </div>
       )}
+      <h2>Testnets</h2>
       <table>
         <thead>
           <tr>
