@@ -82,6 +82,9 @@ const Dashboard = ({ showMainnet }) => {
       if (line.startsWith('Explorer:')) {
         info.explorer = line.split('Explorer:')[1].trim();
       }
+      if (line.startsWith('Purpose:')) {
+        info.purpose = line.split('Purpose:')[1].trim();
+      }
       if (line.startsWith('Faucet:')) {
         info.faucet = line.split('Faucet:')[1].trim();
       }
@@ -134,6 +137,7 @@ const Dashboard = ({ showMainnet }) => {
             <th>Network Config</th>
             <th>Endpoints</th>
             <th>Explorer</th>
+            <th>Purpose</th>
             <th>Faucet</th>
           </tr>
         </thead>
