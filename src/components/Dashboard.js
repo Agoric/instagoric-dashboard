@@ -49,7 +49,7 @@ const Dashboard = ({ showMainnet }) => {
           }
         })
       );
-      setTestnets((prevTestnets) => [...prevTestnets, ...results.filter(Boolean)]); // Accumulate results
+      setTestnets(results.filter(Boolean)); // Replace with new results
     };
 
     fetchTestnetData();
