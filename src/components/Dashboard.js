@@ -92,6 +92,7 @@ const Dashboard = ({ showMainnet }) => {
 
   return (
     <div className="dashboard">
+      <h1>Testnet Dashboard</h1>
       {showMainnet && (
         <div className="mainnet-section">
           <h2>Mainnet</h2>
@@ -121,7 +122,6 @@ const Dashboard = ({ showMainnet }) => {
           </table>
         </div>
       )}
-      <h1>Testnet Dashboard</h1>
       <table>
         <thead>
           <tr>
