@@ -37,7 +37,8 @@ const Dashboard = ({ showMainnet }) => {
             // Parse necessary data
             const data = parseTestnetData(preTag.innerText);
             console.log(`Parsed data for ${url}:`, data); // Debug log to check parsed data
-            return { url, ...data };
+            const testnetName = new URL(url).hostname.split('.')[0];
+            return { testnetName, url, ...data };
           } catch (error) {
             console.error(`Error fetching data from ${url}:`, error);
             return null;
@@ -126,6 +127,7 @@ const Dashboard = ({ showMainnet }) => {
       <table>
         <thead>
           <tr>
+            <th>Testnet Name</th>
             <th>Chain</th>
             <th>Docker Image</th>
             <th>Revision Link</th>

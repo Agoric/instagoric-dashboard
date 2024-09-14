@@ -3,6 +3,7 @@ import React from 'react';
 const TestnetRow = ({ testnet }) => {
   return (
     <tr>
+      <td>{testnet.testnetName}</td>
       <td>{testnet.chain}</td>
       <td>{testnet.dockerImage}</td>
       <td>
