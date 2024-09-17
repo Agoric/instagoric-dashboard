@@ -143,13 +143,11 @@ const Dashboard = ({ showMainnet }) => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                {testnets
-                  .filter(testnet => testnet.testnetName === 'followmain')
-                  .map((mainnet, index) => (
-                    <TestnetRow key={index} testnet={mainnet} />
-                  ))}
-              </tr>
+              {testnets
+                .filter(testnet => testnet.testnetName === 'followmain')
+                .map((mainnet, index) => (
+                  <TestnetRow key={index} testnet={mainnet} />
+                ))}
             </tbody>
           </table>
         </div>
