@@ -15,13 +15,6 @@ const TestnetRow = ({ testnet }) => {
         )}
       </td>
       <td>
-        {testnet.networkConfig && (
-          <a href={testnet.networkConfig} target="_blank" rel="noopener noreferrer">
-            Network Config
-          </a>
-        )}
-      </td>
-      <td>
         {testnet.rpc && (
           <a href={testnet.rpc} target="_blank" rel="noopener noreferrer">
             RPC

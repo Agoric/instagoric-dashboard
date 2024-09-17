@@ -136,7 +136,6 @@ const Dashboard = ({ showMainnet }) => {
                 <th>Docker Image</th>
                 <th>Purpose</th>
                 <th>Revision Link</th>
-                <th>Network Config</th>
                 <th>Endpoints</th>
                 <th>Explorer</th>
                 <th>Faucet</th>
@@ -161,7 +160,6 @@ const Dashboard = ({ showMainnet }) => {
             <th>Docker Image</th>
             <th>Purpose</th>
             <th>Revision Link</th>
-            <th>Network Config</th>
             <th>Endpoints</th>
             <th>Explorer</th>
             <th>Faucet</th>
