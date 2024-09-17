@@ -166,7 +166,6 @@ const Dashboard = ({ showMainnet }) => {
             <th>Endpoints</th>
             <th>Explorer</th>
             <th>Faucet</th>
-            <th>Peers</th>
           </tr>
         </thead>
         <tbody>
