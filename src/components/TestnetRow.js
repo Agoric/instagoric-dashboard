@@ -3,7 +3,11 @@ import React from 'react';
 const TestnetRow = ({ testnet }) => {
   return (
     <tr>
-      <td>{testnet.testnetName}</td>
+      <td>
+        <a href={testnet.url} target="_blank" rel="noopener noreferrer">
+          {testnet.testnetName}
+        </a>
+      </td>
       <td>
         <a href={testnet.url} target="_blank" rel="noopener noreferrer">
           {testnet.chain}
