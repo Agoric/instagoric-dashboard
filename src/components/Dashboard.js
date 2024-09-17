@@ -9,18 +9,70 @@ const testnetUrls = [
   'https://axlenet.agoric.net',
 ];
 
-const mainnetData = {
-  chain: 'Mainnet',
-  explorer: 'https://ping.pub/agoric/',
-  datadogMetrics: 'https://datadog.metrics.link',
-};
+const mainnetUrl = 'https://followmain.agoric.net/';
 
 const Dashboard = ({ showMainnet }) => {
   const [testnets, setTestnets] = useState([]);
 
   useEffect(() => {
     const fetchTestnetData = async () => {
-      const results = await Promise.all(
+      const mainnetPromise = fetch(mainnetUrl)
+        .then(response => response.text())
+        .then(text => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(text, 'text/html');
+          const preTag = doc.querySelector('pre');
+
+          if (!preTag) {
+            console.error(`No <pre> tag found in the response from ${mainnetUrl}`);
+            return null;
+          }
+
+          const data = parseTestnetData(preTag.innerText);
+          const testnetName = new URL(mainnetUrl).hostname.split('.')[0];
+          const netInfoUrl = `https://${testnetName}.rpc.agoric.net/net_info`;
+          return fetch(netInfoUrl)
+            .then(netInfoResponse => netInfoResponse.json())
+            .then(netInfoData => {
+              const n_peers = netInfoData.result.n_peers;
+              return { testnetName, url: mainnetUrl, n_peers, ...data };
+            });
+        })
+        .catch(error => {
+          console.error(`Error fetching data from ${mainnetUrl}:`, error);
+          return null;
+        });
+
+      const results = await Promise.all([
+        ...testnetUrls.map(async (url) => {
+          try {
+            const response = await fetch(url);
+            const text = await response.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(text, 'text/html');
+            const preTag = doc.querySelector('pre');
+
+            if (!preTag) {
+              console.error(`No <pre> tag found in the response from ${url}`);
+              return null;
+            }
+
+            // Parse necessary data
+            const data = parseTestnetData(preTag.innerText);
+            console.log(`Parsed data for ${url}:`, data); // Debug log to check parsed data
+            const testnetName = new URL(url).hostname.split('.')[0];
+            const netInfoUrl = `https://${testnetName}.rpc.agoric.net/net_info`;
+            const netInfoResponse = await fetch(netInfoUrl);
+            const netInfoData = await netInfoResponse.json();
+            const n_peers = netInfoData.result.n_peers;
+            return { testnetName, url, n_peers, ...data };
+          } catch (error) {
+            console.error(`Error fetching data from ${url}:`, error);
+            return null;
+          }
+        }),
+        mainnetPromise
+      ]);
         testnetUrls.map(async (url) => {
           try {
             const response = await fetch(url);
@@ -119,19 +171,11 @@ const Dashboard = ({ showMainnet }) => {
             </thead>
             <tbody>
               <tr>
-                <td>{mainnetData.chain}</td>
-                <td>Mainnet Docker Image</td>
-                <td>Mainnet Purpose</td>
-                <td>
-                  <a href={mainnetData.explorer} target="_blank" rel="noopener noreferrer">
-                    Explorer
-                  </a>
-                </td>
-                <td>
-                  <a href={mainnetData.datadogMetrics} target="_blank" rel="noopener noreferrer">
-                    Datadog Metrics
-                  </a>
-                </td>
+                {testnets
+                  .filter(testnet => testnet.testnetName === 'followmain')
+                  .map((mainnet, index) => (
+                    <TestnetRow key={index} testnet={mainnet} />
+                  ))}
               </tr>
             </tbody>
           </table>
