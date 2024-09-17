@@ -117,9 +117,9 @@ const Dashboard = ({ showMainnet }) => {
         info.faucet = line.split('Faucet:')[1].trim();
       }
       if (line.startsWith('Logs:')) {
-        const match = line.match(/<a href=([^>]+)>/);
+        const match = line.match(/<a href="([^"]+)"/);
         if (match) {
-          info.logs = match[1].split('>')[0];
+          info.logs = match[1];
         }
       }
     });
