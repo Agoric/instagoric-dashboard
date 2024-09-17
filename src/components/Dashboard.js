@@ -119,7 +119,7 @@ const Dashboard = ({ showMainnet }) => {
       if (line.startsWith('Logs:')) {
         const match = line.match(/<a href=([^>]+)>/);
         if (match) {
-          info.logs = match[1];
+          info.logs = match[1].split('>')[0];
         }
       }
     });
