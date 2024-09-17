@@ -131,6 +131,7 @@ const Dashboard = ({ showMainnet }) => {
           <table>
             <thead>
               <tr>
+                <th>Testnet Name</th>
                 <th>Chain Id</th>
                 <th>Docker Image</th>
                 <th>Purpose</th>
