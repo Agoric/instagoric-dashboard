@@ -73,34 +73,6 @@ const Dashboard = ({ showMainnet }) => {
         }),
         mainnetPromise
       ]);
-        testnetUrls.map(async (url) => {
-          try {
-            const response = await fetch(url);
-            const text = await response.text();
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(text, 'text/html');
-            const preTag = doc.querySelector('pre');
-
-            if (!preTag) {
-              console.error(`No <pre> tag found in the response from ${url}`);
-              return null;
-            }
-
-            // Parse necessary data
-            const data = parseTestnetData(preTag.innerText);
-            console.log(`Parsed data for ${url}:`, data); // Debug log to check parsed data
-            const testnetName = new URL(url).hostname.split('.')[0];
-            const netInfoUrl = `https://${testnetName}.rpc.agoric.net/net_info`;
-            const netInfoResponse = await fetch(netInfoUrl);
-            const netInfoData = await netInfoResponse.json();
-            const n_peers = netInfoData.result.n_peers;
-            return { testnetName, url, n_peers, ...data };
-          } catch (error) {
-            console.error(`Error fetching data from ${url}:`, error);
-            return null;
-          }
-        })
-      );
       setTestnets(results.filter(Boolean)); // Replace with new results
     };
 
