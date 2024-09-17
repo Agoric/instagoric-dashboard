@@ -47,6 +47,13 @@ const TestnetRow = ({ testnet }) => {
           </a>
         )}
       </td>
+      <td>
+        {testnet.logs && (
+          <a href={testnet.logs} target="_blank" rel="noopener noreferrer">
+            Logs
+          </a>
+        )}
+      </td>
     </tr>
   );
 };

@@ -116,6 +116,9 @@ const Dashboard = ({ showMainnet }) => {
       if (line.startsWith('Faucet:')) {
         info.faucet = line.split('Faucet:')[1].trim();
       }
+      if (line.startsWith('Logs:')) {
+        info.logs = line.split('Logs:')[1].trim();
+      }
     });
 
     console.log('Parsed info object:', info); // Debug log to check final parsed info object
@@ -139,6 +142,7 @@ const Dashboard = ({ showMainnet }) => {
                 <th>Endpoints</th>
                 <th>Explorer</th>
                 <th>Faucet</th>
+                <th>Logs</th>
               </tr>
             </thead>
             <tbody>
@@ -163,6 +167,7 @@ const Dashboard = ({ showMainnet }) => {
             <th>Endpoints</th>
             <th>Explorer</th>
             <th>Faucet</th>
+            <th>Logs</th>
           </tr>
         </thead>
         <tbody>
