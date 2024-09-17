@@ -117,9 +117,9 @@ const Dashboard = ({ showMainnet }) => {
         info.faucet = line.split('Faucet:')[1].trim();
       }
       if (line.startsWith('Logs:')) {
-        const match = line.match(/Logs: <a href="([^"]+)"/)[1];
-        if (match) {
-          info.logs = match;
+        const match = line.match(/Logs: <a href="([^"]+)"/);
+        if (match && match[1]) {
+          info.logs = match[1];
         }
       }
     });
