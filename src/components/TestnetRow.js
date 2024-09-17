@@ -4,7 +4,11 @@ const TestnetRow = ({ testnet }) => {
   return (
     <tr>
       <td>{testnet.testnetName}</td>
-      <td>{testnet.chain}</td>
+      <td>
+        <a href={testnet.url} target="_blank" rel="noopener noreferrer">
+          {testnet.chain}
+        </a>
+      </td>
       <td>{testnet.dockerImage}</td>
       <td>{testnet.purpose}</td>
       <td>
