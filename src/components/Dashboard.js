@@ -131,7 +131,7 @@ const Dashboard = ({ showMainnet }) => {
           <table>
             <thead>
               <tr>
-                <th>Chain</th>
+                <th>Chain Id</th>
                 <th>Docker Image</th>
                 <th>Purpose</th>
                 <th>Revision Link</th>
@@ -158,7 +158,7 @@ const Dashboard = ({ showMainnet }) => {
         <thead>
           <tr>
             <th>Testnet Name</th>
-            <th>Chain</th>
+            <th>Chain Id</th>
             <th>Docker Image</th>
             <th>Purpose</th>
             <th>Revision Link</th>
