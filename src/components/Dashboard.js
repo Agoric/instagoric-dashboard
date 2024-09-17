@@ -127,7 +127,7 @@ const Dashboard = ({ showMainnet }) => {
 
   return (
     <div className="dashboard">
-      <h1>Testnet Dashboard</h1>
+      <h1>Instagoric Dashboard</h1>
       {showMainnet && (
         <div className="mainnet-section">
           <h2>Mainnet</h2>
