@@ -60,7 +60,7 @@ const TestnetRow = ({ testnet }) => {
           href="https://github.com/Agoric/instagoric-private/actions/workflows/deploy-namespace.yaml"
           target="_blank"
           rel="noopener noreferrer"
-          sx={{ borderRadius: '16px' }}
+          sx={{ borderRadius: '16px', textTransform: 'none' }}
         >
           Redeploy
         </Button>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { AppBar, Box, Toolbar, Typography, Button } from '@mui/material';
 import Dashboard from './components/Dashboard';
+import './App.css';
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
             href="https://github.com/Agoric/instagoric-private/actions/workflows/deploy-namespace.yaml"
             target="_blank"
             rel="noopener noreferrer"
-            sx={{ borderRadius: '12px', marginLeft: 'auto' }}
+            sx={{ borderRadius: '12px', marginLeft: 'auto', textTransform: 'none'}}
           >
             New Testnet
           </Button>
