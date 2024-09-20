@@ -107,9 +107,6 @@ const Dashboard = ({ showMainnet }) => {
       if (line.startsWith('Purpose:')) {
         info.purpose = line.split('Purpose:')[1].trim();
       }
-      if (line.startsWith('Faucet:')) {
-        info.faucet = line.split('Faucet:')[1].trim();
-      }
       if (line.startsWith('Logs:')) {
         console.log("line:" + line);
         const match = line.match(/href=(["']?)([^"'\s>]+)\1/);
