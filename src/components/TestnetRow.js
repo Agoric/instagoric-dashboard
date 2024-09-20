@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from '@mui/material';
 
 const TestnetRow = ({ testnet }) => {
   return (
@@ -50,6 +51,18 @@ const TestnetRow = ({ testnet }) => {
         <a href={testnet.logs} target="_blank" rel="noopener noreferrer">
             Logs
         </a>
+      </td>
+      <td>
+        <Button
+          variant="contained"
+          color="secondary"
+          href="https://github.com/Agoric/instagoric-private/actions/workflows/deploy-namespace.yaml"
+          target="_blank"
+          rel="noopener noreferrer"
+          sx={{ borderRadius: '16px' }}
+        >
+          Reset
+        </Button>
       </td>
     </tr>
   );
