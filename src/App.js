@@ -1,15 +1,21 @@
 import React from 'react';
-import './App.css';
+import { AppBar, Box, Toolbar, Typography } from '@mui/material';
 import Dashboard from './components/Dashboard';
 
 function App() {
   return (
-    <div className="App">
-      <div className="top-bar">
-        <h1 className="title">My Application</h1>
-      </div>
-      <Dashboard showMainnet={true} />
-    </div>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            My Application
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <Box className="App" sx={{ padding: 2 }}>
+        <Dashboard showMainnet={true} />
+      </Box>
+    </Box>
   );
 }
 
