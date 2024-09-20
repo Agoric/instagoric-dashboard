@@ -139,7 +139,6 @@ const Dashboard = ({ showMainnet }) => {
                 <th>Revision Link</th>
                 <th>Endpoints</th>
                 <th>Explorer</th>
-                <th>Faucet</th>
                 <th>Logs</th>
               </tr>
             </thead>
@@ -164,7 +163,6 @@ const Dashboard = ({ showMainnet }) => {
             <th>Revision Link</th>
             <th>Endpoints</th>
             <th>Explorer</th>
-            <th>Faucet</th>
             <th>Logs</th>
           </tr>
         </thead>
