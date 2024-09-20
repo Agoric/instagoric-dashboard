@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import '../App.css';
 import { Box } from '@mui/material';
 import TestnetRow from './TestnetRow';
 
@@ -122,7 +123,7 @@ const Dashboard = ({ showMainnet }) => {
   };
 
   return (
-    <Box className="dashboard" sx={{ width: '100%', maxWidth: '1200px', margin: '20px auto', padding: '20px', backgroundColor: '#fff', boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)', borderRadius: '8px', boxSizing: 'border-box' }}>
+    <Box className="dashboard" sx={{ width: '100%', margin: '20px auto', padding: '20px', backgroundColor: '#fff', boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)', borderRadius: '8px', boxSizing: 'border-box' }}>
       {showMainnet && (
         <div className="mainnet-section">
           <h2>Mainnet</h2>

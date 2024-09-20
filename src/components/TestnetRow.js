@@ -9,9 +9,7 @@ const TestnetRow = ({ testnet }) => {
         </a>
       </td>
       <td>
-        <a href={testnet.url} target="_blank" rel="noopener noreferrer">
-          {testnet.chain}
-        </a>
+        {testnet.chain}
       </td>
       <td>{testnet.dockerImage}</td>
       <td>{testnet.purpose}</td>
@@ -49,18 +47,9 @@ const TestnetRow = ({ testnet }) => {
         )}
       </td>
       <td>
-        {testnet.faucet && (
-          <a href={testnet.faucet} target="_blank" rel="noopener noreferrer">
-            Faucet
-          </a>
-        )}
-      </td>
-      <td>
-        {testnet.logs && (
-          <a href={testnet.logs} target="_blank" rel="noopener noreferrer">
+        <a href={testnet.logs} target="_blank" rel="noopener noreferrer">
             Logs
-          </a>
-        )}
+        </a>
       </td>
     </tr>
   );

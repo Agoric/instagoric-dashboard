@@ -8,7 +8,7 @@ function App() {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            My Application
+            Instagoric Dashboard
           </Typography>
         </Toolbar>
       </AppBar>
