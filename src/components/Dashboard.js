@@ -122,7 +122,7 @@ const Dashboard = ({ showMainnet }) => {
   };
 
   return (
-    <div className="dashboard">
+    <Box className="dashboard" sx={{ width: '100%', maxWidth: '100%', margin: '0 auto', padding: 0, backgroundColor: '#fff', boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)', borderRadius: '8px' }}>
       {showMainnet && (
         <div className="mainnet-section">
           <h2>Mainnet</h2>
