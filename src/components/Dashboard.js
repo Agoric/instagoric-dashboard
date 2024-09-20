@@ -174,7 +174,7 @@ const Dashboard = ({ showMainnet }) => {
           ))}
         </tbody>
       </table>
-    </div>
+    </Box>
   );
 };
 
