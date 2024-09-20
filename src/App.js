@@ -12,7 +12,7 @@ function App() {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Box className="App" sx={{ padding: 2 }}>
+      <Box className="App" sx={{ padding: 2, boxSizing: 'border-box' }}>
         <Dashboard showMainnet={true} />
       </Box>
     </Box>
