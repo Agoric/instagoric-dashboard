@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from '@mui/material';
+import '../App.css';
 
 const TestnetRow = ({ testnet }) => {
   return (
