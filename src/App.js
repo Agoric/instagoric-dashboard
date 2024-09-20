@@ -1,5 +1,6 @@
 import React from 'react';
 import { AppBar, Box, Toolbar, Typography, Button } from '@mui/material';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import Dashboard from './components/Dashboard';
 import './App.css';
 
@@ -11,6 +12,15 @@ function App() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Instagoric Dashboard
           </Typography>
+          <Button
+            color="inherit"
+            href="https://github.com/Agoric/instagoric-dashboard"
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{ marginLeft: 'auto' }}
+          >
+            <GitHubIcon />
+          </Button>
           <Button
             variant="contained"
             color="primary"
