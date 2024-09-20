@@ -7,7 +7,7 @@ const TestnetRow = ({ testnet }) => {
     <tr>
       <td>
         <a href={testnet.url} target="_blank" rel="noopener noreferrer">
-          {testnet.testnetName}
+          {testnet.testnetName === 'followmain' ? 'mainnet' : testnet.testnetName}
         </a>
       </td>
       <td>
