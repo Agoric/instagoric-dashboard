@@ -55,13 +55,13 @@ const TestnetRow = ({ testnet }) => {
       <td>
         <Button
           variant="contained"
-          color="secondary"
+          color="primary"
           href="https://github.com/Agoric/instagoric-private/actions/workflows/deploy-namespace.yaml"
           target="_blank"
           rel="noopener noreferrer"
           sx={{ borderRadius: '16px' }}
         >
-          Reset
+          Redeploy
         </Button>
       </td>
     </tr>
