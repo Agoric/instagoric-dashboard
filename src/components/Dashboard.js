@@ -29,7 +29,7 @@ const Dashboard = ({ showMainnet }) => {
             return null;
           }
 
-          const data = parseTestnetData(preTag.innerText);
+          const data = parseTestnetData(text);
           const testnetName = new URL(mainnetUrl).hostname.split('.')[0];
           const netInfoUrl = `https://${testnetName}.rpc.agoric.net/net_info`;
           return fetch(netInfoUrl)
@@ -111,9 +111,11 @@ const Dashboard = ({ showMainnet }) => {
         info.faucet = line.split('Faucet:')[1].trim();
       }
       if (line.startsWith('Logs:')) {
-        const match = line.match(/Logs:\s*<a\s+href="([^"]+)"/);
-        if (match && match[1]) {
-          info.logs = match[1];
+        console.log("line:" + line);
+        const match = line.match(/href=(["']?)([^"'\s>]+)\1/);
+        console.log("match:" + match);
+        if (match && match[2]) {
+          info.logs = match[2];
         }
       }
     });
