@@ -139,7 +139,6 @@ const Dashboard = ({ showMainnet }) => {
                 <th>Explorer</th>
                 <th>Logs</th>
                 <th>Action</th>
-                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -164,6 +163,7 @@ const Dashboard = ({ showMainnet }) => {
             <th>Endpoints</th>
             <th>Explorer</th>
             <th>Logs</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
