@@ -48,17 +48,10 @@ const Dashboard = ({ showMainnet }) => {
           try {
             const response = await fetch(url);
             const text = await response.text();
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(text, 'text/html');
-            const preTag = doc.querySelector('pre');
 
-            if (!preTag) {
-              console.error(`No <pre> tag found in the response from ${url}`);
-              return null;
-            }
 
             // Parse necessary data
-            const data = parseTestnetData(preTag.innerText);
+            const data = parseTestnetData(text);
             console.log(`Parsed data for ${url}:`, data); // Debug log to check parsed data
             const testnetName = new URL(url).hostname.split('.')[0];
             const netInfoUrl = `https://${testnetName}.rpc.agoric.net/net_info`;
@@ -117,7 +110,7 @@ const Dashboard = ({ showMainnet }) => {
         info.faucet = line.split('Faucet:')[1].trim();
       }
       if (line.startsWith('Logs:')) {
-        const match = line.match(/Logs: <a href="([^"]+)"/);
+        const match = line.match(/Logs:\s*(.*)/);
         if (match && match[1]) {
           info.logs = match[1];
         }
@@ -130,7 +123,6 @@ const Dashboard = ({ showMainnet }) => {
 
   return (
     <div className="dashboard">
-      <h1>Instagoric Dashboard</h1>
       {showMainnet && (
         <div className="mainnet-section">
           <h2>Mainnet</h2>
@@ -174,7 +166,9 @@ const Dashboard = ({ showMainnet }) => {
           </tr>
         </thead>
         <tbody>
-          {testnets.map((testnet, index) => (
+          {testnets
+          .filter(testnet => testnet.testnetName !== 'followmain')
+          .map((testnet, index) => (
             <TestnetRow key={index} testnet={testnet} />
           ))}
         </tbody>
