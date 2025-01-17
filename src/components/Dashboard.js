@@ -14,61 +14,33 @@ const testnetUrls = [
 const mainnetUrl = 'https://followmain.agoric.net/';
 
 const Dashboard = ({ showMainnet }) => {
-  const [testnets, setTestnets] = useState([]);
+  const [testnets, setTestnets] = useState({});
 
   useEffect(() => {
-    const fetchTestnetData = async () => {
-      const mainnetPromise = fetch(mainnetUrl)
-        .then(response => response.text())
-        .then(text => {
-          const parser = new DOMParser();
-          const doc = parser.parseFromString(text, 'text/html');
-          const preTag = doc.querySelector('pre');
-
-          if (!preTag) {
-            console.error(`No <pre> tag found in the response from ${mainnetUrl}`);
-            return null;
-          }
-
+    const fetchTestnetData = () => {
+      const fetchSingleTestnet = async (url) => {
+        try {
+          const response = await fetch(url);
+          const text = await response.text();
           const data = parseTestnetData(text);
-          const testnetName = new URL(mainnetUrl).hostname.split('.')[0];
+          const testnetName = new URL(url).hostname.split('.')[0];
           const netInfoUrl = `https://${testnetName}.rpc.agoric.net/net_info`;
-          return fetch(netInfoUrl)
-            .then(netInfoResponse => netInfoResponse.json())
-            .then(netInfoData => {
-              const n_peers = netInfoData.result.n_peers;
-              return { testnetName, url: mainnetUrl, n_peers, ...data };
-            });
-        })
-        .catch(error => {
-          console.error(`Error fetching data from ${mainnetUrl}:`, error);
-          return null;
-        });
+          const netInfoResponse = await fetch(netInfoUrl);
+          const netInfoData = await netInfoResponse.json();
+          const n_peers = netInfoData.result.n_peers;
+          
+          setTestnets(prev => ({
+            ...prev,
+            [testnetName]: { testnetName, url, n_peers, ...data }
+          }));
+        } catch (error) {
+          console.error(`Error fetching data from ${url}:`, error);
+        }
+      };
 
-      const results = await Promise.all([
-        ...testnetUrls.map(async (url) => {
-          try {
-            const response = await fetch(url);
-            const text = await response.text();
-
-
-            // Parse necessary data
-            const data = parseTestnetData(text);
-            console.log(`Parsed data for ${url}:`, data); // Debug log to check parsed data
-            const testnetName = new URL(url).hostname.split('.')[0];
-            const netInfoUrl = `https://${testnetName}.rpc.agoric.net/net_info`;
-            const netInfoResponse = await fetch(netInfoUrl);
-            const netInfoData = await netInfoResponse.json();
-            const n_peers = netInfoData.result.n_peers;
-            return { testnetName, url, n_peers, ...data };
-          } catch (error) {
-            console.error(`Error fetching data from ${url}:`, error);
-            return null;
-          }
-        }),
-        mainnetPromise
-      ]);
-      setTestnets(results.filter(Boolean)); // Replace with new results
+      [...testnetUrls, mainnetUrl].forEach(url => {
+        fetchSingleTestnet(url);
+      });
     };
 
     fetchTestnetData();
@@ -102,6 +74,8 @@ const Dashboard = ({ showMainnet }) => {
     return info;
   };
 
+  const testnetArray = Object.values(testnets);
+
   return (
     <Box className="dashboard" sx={{ width: '100%', margin: '20px auto', padding: '20px', backgroundColor: '#fff', boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)', borderRadius: '8px', boxSizing: 'border-box' }}>
       {showMainnet && (
@@ -119,10 +93,10 @@ const Dashboard = ({ showMainnet }) => {
               </tr>
             </thead>
             <tbody>
-              {testnets
-                .filter(testnet => testnet.testnetName === 'followmain')
+              {testnetArray
+                .filter(testnet => testnet?.testnetName === 'followmain')
                 .map((mainnet, index) => (
-                  <TestnetRow key={index} testnet={mainnet} />
+                  <TestnetRow key={mainnet.testnetName} testnet={mainnet} />
                 ))}
             </tbody>
           </table>
@@ -141,11 +115,11 @@ const Dashboard = ({ showMainnet }) => {
           </tr>
         </thead>
         <tbody>
-          {testnets
-          .filter(testnet => testnet.testnetName !== 'followmain')
-          .map((testnet, index) => (
-            <TestnetRow key={index} testnet={testnet} />
-          ))}
+          {testnetArray
+            .filter(testnet => testnet?.testnetName !== 'followmain')
+            .map((testnet, index) => (
+              <TestnetRow key={testnet.testnetName} testnet={testnet} />
+            ))}
         </tbody>
       </table>
     </Box>
