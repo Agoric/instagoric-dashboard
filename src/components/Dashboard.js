@@ -87,34 +87,14 @@ const Dashboard = ({ showMainnet }) => {
       if (line.startsWith('Docker Image:')) {
         info.dockerImage = line.split('Docker Image:')[1].trim();
       }
-      if (line.startsWith('Revision Link:')) {
-        info.revisionLink = line.split('Revision Link:')[1].trim();
+      if (line.startsWith('Revision:')) {
+        info.revision = line.split('Revision:')[1].trim();
       }
       if (line.startsWith('Network Config:')) {
         info.networkConfig = line.split('Network Config:')[1].trim();
       }
-      if (line.startsWith('RPC:')) {
-        info.rpc = line.split('RPC:')[1].trim();
-      }
-      if (line.startsWith('gRPC:')) {
-        info.grpc = line.split('gRPC:')[1].trim();
-      }
-      if (line.startsWith('API:')) {
-        info.api = line.split('API:')[1].trim();
-      }
-      if (line.startsWith('Explorer:')) {
-        info.explorer = line.split('Explorer:')[1].trim();
-      }
       if (line.startsWith('Purpose:')) {
         info.purpose = line.split('Purpose:')[1].trim();
-      }
-      if (line.startsWith('Logs:')) {
-        console.log("line:" + line);
-        const match = line.match(/href=(["']?)([^"'\s>]+)\1/);
-        console.log("match:" + match);
-        if (match && match[2]) {
-          info.logs = match[2];
-        }
       }
     });
 
@@ -134,10 +114,7 @@ const Dashboard = ({ showMainnet }) => {
                 <th>Chain Id</th>
                 <th>Docker Image</th>
                 <th>Purpose</th>
-                <th>Revision Link</th>
-                <th>Endpoints</th>
-                <th>Explorer</th>
-                <th>Logs</th>
+                <th>Revision</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -159,10 +136,7 @@ const Dashboard = ({ showMainnet }) => {
             <th>Chain Id</th>
             <th>Docker Image</th>
             <th>Purpose</th>
-            <th>Revision Link</th>
-            <th>Endpoints</th>
-            <th>Explorer</th>
-            <th>Logs</th>
+            <th>Revision</th>
             <th>Action</th>
           </tr>
         </thead>
