@@ -24,14 +24,10 @@ const Dashboard = ({ showMainnet }) => {
           const text = await response.text();
           const data = parseTestnetData(text);
           const testnetName = new URL(url).hostname.split('.')[0];
-          const netInfoUrl = `https://${testnetName}.rpc.agoric.net/net_info`;
-          const netInfoResponse = await fetch(netInfoUrl);
-          const netInfoData = await netInfoResponse.json();
-          const n_peers = netInfoData.result.n_peers;
           
           setTestnets(prev => ({
             ...prev,
-            [testnetName]: { testnetName, url, n_peers, ...data }
+            [testnetName]: { testnetName, url, ...data }
           }));
         } catch (error) {
           console.error(`Error fetching data from ${url}:`, error);
